@@ -1,0 +1,507 @@
+{
+  "id": "mindmap-meeting-retro",
+  "name": "Retro Map",
+  "description": "Sprint retrospective mindmap.",
+  "thumbnail": "static/thumbnail.png",
+  "icon_type": "bold",
+  "merged_components": [
+    {
+      "id": "background",
+      "description": "Full canvas background for the mindmap.",
+      "variants": [
+        {
+          "id": "background",
+          "description": "Full canvas background.",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#ECFDF5",
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 0,
+                  "y": 720
+                }
+              ],
+              "closed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_node",
+      "description": "Center of the quadrant map",
+      "variants": [
+        {
+          "id": "center_node",
+          "description": "Center of the quadrant map",
+          "position": {
+            "x": 560,
+            "y": 335
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#059669",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Retro",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 18,
+                "fontWeight": "700",
+                "color": "#FFFFFF",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_0",
+      "description": "Connection to What Worked quadrant",
+      "variants": [
+        {
+          "id": "line_0",
+          "description": "Connection to What Worked quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 480,
+                  "y": 252
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_0",
+      "description": "Quadrant: What Worked",
+      "variants": [
+        {
+          "id": "quadrant_0",
+          "description": "Quadrant: What Worked",
+          "position": {
+            "x": 380,
+            "y": 225
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "What Worked",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_1",
+      "description": "Connection to What Didn't quadrant",
+      "variants": [
+        {
+          "id": "line_1",
+          "description": "Connection to What Didn't quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 800,
+                  "y": 252
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_1",
+      "description": "Quadrant: What Didn't",
+      "variants": [
+        {
+          "id": "quadrant_1",
+          "description": "Quadrant: What Didn't",
+          "position": {
+            "x": 700,
+            "y": 225
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "What Didn't",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_2",
+      "description": "Connection to Action Items quadrant",
+      "variants": [
+        {
+          "id": "line_2",
+          "description": "Connection to Action Items quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 480,
+                  "y": 467
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_2",
+      "description": "Quadrant: Action Items",
+      "variants": [
+        {
+          "id": "quadrant_2",
+          "description": "Quadrant: Action Items",
+          "position": {
+            "x": 380,
+            "y": 440
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Action Items",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_3",
+      "description": "Connection to Kudos quadrant",
+      "variants": [
+        {
+          "id": "line_3",
+          "description": "Connection to Kudos quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 800,
+                  "y": 467
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_3",
+      "description": "Quadrant: Kudos",
+      "variants": [
+        {
+          "id": "quadrant_3",
+          "description": "Quadrant: Kudos",
+          "position": {
+            "x": 700,
+            "y": 440
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Kudos",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

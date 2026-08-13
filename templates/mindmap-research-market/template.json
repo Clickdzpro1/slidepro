@@ -1,0 +1,703 @@
+{
+  "id": "mindmap-research-market",
+  "name": "Market Research",
+  "description": "Market research mindmap with data branches.",
+  "thumbnail": "static/thumbnail.png",
+  "icon_type": "bold",
+  "merged_components": [
+    {
+      "id": "background",
+      "description": "Full canvas background for the mindmap.",
+      "variants": [
+        {
+          "id": "background",
+          "description": "Full canvas background.",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#EEF2FF",
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 0,
+                  "y": 720
+                }
+              ],
+              "closed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_node",
+      "description": "Central topic of the mindmap",
+      "variants": [
+        {
+          "id": "center_node",
+          "description": "Central topic of the mindmap",
+          "position": {
+            "x": 540,
+            "y": 330
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#4F46E5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 60
+                },
+                {
+                  "x": 0,
+                  "y": 60
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Market Research",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 60
+              },
+              "style": {
+                "fontSize": 20,
+                "fontWeight": "700",
+                "color": "#FFFFFF",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_0",
+      "description": "Connection from center to Size",
+      "variants": [
+        {
+          "id": "line_0",
+          "description": "Connection from center to Size",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 640,
+                  "y": 80
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_0",
+      "description": "Branch: Size",
+      "variants": [
+        {
+          "id": "branch_0",
+          "description": "Branch: Size",
+          "position": {
+            "x": 560,
+            "y": 55
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Size",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_1",
+      "description": "Connection from center to Trends",
+      "variants": [
+        {
+          "id": "line_1",
+          "description": "Connection from center to Trends",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 882,
+                  "y": 220
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_1",
+      "description": "Branch: Trends",
+      "variants": [
+        {
+          "id": "branch_1",
+          "description": "Branch: Trends",
+          "position": {
+            "x": 802,
+            "y": 195
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Trends",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_2",
+      "description": "Connection from center to Segments",
+      "variants": [
+        {
+          "id": "line_2",
+          "description": "Connection from center to Segments",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 882,
+                  "y": 499
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_2",
+      "description": "Branch: Segments",
+      "variants": [
+        {
+          "id": "branch_2",
+          "description": "Branch: Segments",
+          "position": {
+            "x": 802,
+            "y": 474
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Segments",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_3",
+      "description": "Connection from center to Demand",
+      "variants": [
+        {
+          "id": "line_3",
+          "description": "Connection from center to Demand",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 640,
+                  "y": 640
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_3",
+      "description": "Branch: Demand",
+      "variants": [
+        {
+          "id": "branch_3",
+          "description": "Branch: Demand",
+          "position": {
+            "x": 560,
+            "y": 615
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Demand",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_4",
+      "description": "Connection from center to Competition",
+      "variants": [
+        {
+          "id": "line_4",
+          "description": "Connection from center to Competition",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 398,
+                  "y": 500
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_4",
+      "description": "Branch: Competition",
+      "variants": [
+        {
+          "id": "branch_4",
+          "description": "Branch: Competition",
+          "position": {
+            "x": 318,
+            "y": 475
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Competition",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_5",
+      "description": "Connection from center to Gaps",
+      "variants": [
+        {
+          "id": "line_5",
+          "description": "Connection from center to Gaps",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 398,
+                  "y": 220
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_5",
+      "description": "Branch: Gaps",
+      "variants": [
+        {
+          "id": "branch_5",
+          "description": "Branch: Gaps",
+          "position": {
+            "x": 318,
+            "y": 195
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Gaps",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

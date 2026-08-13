@@ -1,0 +1,703 @@
+{
+  "id": "mindmap-decision-hiring",
+  "name": "Hiring Decision",
+  "description": "Candidate hiring decision tree mindmap.",
+  "thumbnail": "static/thumbnail.png",
+  "icon_type": "bold",
+  "merged_components": [
+    {
+      "id": "background",
+      "description": "Full canvas background for the mindmap.",
+      "variants": [
+        {
+          "id": "background",
+          "description": "Full canvas background.",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#ECFDF5",
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 0,
+                  "y": 720
+                }
+              ],
+              "closed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_node",
+      "description": "Root of the tree mindmap",
+      "variants": [
+        {
+          "id": "center_node",
+          "description": "Root of the tree mindmap",
+          "position": {
+            "x": 80,
+            "y": 330
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#059669",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 60
+                },
+                {
+                  "x": 0,
+                  "y": 60
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Hire?",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 60
+              },
+              "style": {
+                "fontSize": 18,
+                "fontWeight": "700",
+                "color": "#FFFFFF",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_0",
+      "description": "Connection from root to Skills",
+      "variants": [
+        {
+          "id": "line_0",
+          "description": "Connection from root to Skills",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 101
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_0",
+      "description": "Branch: Skills",
+      "variants": [
+        {
+          "id": "branch_0",
+          "description": "Branch: Skills",
+          "position": {
+            "x": 1020,
+            "y": 79
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Skills",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_1",
+      "description": "Connection from root to Culture Fit",
+      "variants": [
+        {
+          "id": "line_1",
+          "description": "Connection from root to Culture Fit",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 204
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_1",
+      "description": "Branch: Culture Fit",
+      "variants": [
+        {
+          "id": "branch_1",
+          "description": "Branch: Culture Fit",
+          "position": {
+            "x": 1020,
+            "y": 182
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Culture Fit",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_2",
+      "description": "Connection from root to Experience",
+      "variants": [
+        {
+          "id": "line_2",
+          "description": "Connection from root to Experience",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 307
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_2",
+      "description": "Branch: Experience",
+      "variants": [
+        {
+          "id": "branch_2",
+          "description": "Branch: Experience",
+          "position": {
+            "x": 1020,
+            "y": 285
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Experience",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_3",
+      "description": "Connection from root to Potential",
+      "variants": [
+        {
+          "id": "line_3",
+          "description": "Connection from root to Potential",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 411
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_3",
+      "description": "Branch: Potential",
+      "variants": [
+        {
+          "id": "branch_3",
+          "description": "Branch: Potential",
+          "position": {
+            "x": 1020,
+            "y": 389
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Potential",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_4",
+      "description": "Connection from root to Salary",
+      "variants": [
+        {
+          "id": "line_4",
+          "description": "Connection from root to Salary",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 514
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_4",
+      "description": "Branch: Salary",
+      "variants": [
+        {
+          "id": "branch_4",
+          "description": "Branch: Salary",
+          "position": {
+            "x": 1020,
+            "y": 492
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Salary",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_5",
+      "description": "Connection from root to Timeline",
+      "variants": [
+        {
+          "id": "line_5",
+          "description": "Connection from root to Timeline",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 617
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_5",
+      "description": "Branch: Timeline",
+      "variants": [
+        {
+          "id": "branch_5",
+          "description": "Branch: Timeline",
+          "position": {
+            "x": 1020,
+            "y": 595
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Timeline",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

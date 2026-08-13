@@ -1,0 +1,703 @@
+{
+  "id": "mindmap-learning-data",
+  "name": "Data Science Path",
+  "description": "Data science learning journey mindmap.",
+  "thumbnail": "static/thumbnail.png",
+  "icon_type": "bold",
+  "merged_components": [
+    {
+      "id": "background",
+      "description": "Full canvas background for the mindmap.",
+      "variants": [
+        {
+          "id": "background",
+          "description": "Full canvas background.",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#ECFDF5",
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 0,
+                  "y": 720
+                }
+              ],
+              "closed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_node",
+      "description": "Root of the tree mindmap",
+      "variants": [
+        {
+          "id": "center_node",
+          "description": "Root of the tree mindmap",
+          "position": {
+            "x": 80,
+            "y": 330
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#059669",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 60
+                },
+                {
+                  "x": 0,
+                  "y": 60
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Data Science",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 60
+              },
+              "style": {
+                "fontSize": 18,
+                "fontWeight": "700",
+                "color": "#FFFFFF",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_0",
+      "description": "Connection from root to Statistics",
+      "variants": [
+        {
+          "id": "line_0",
+          "description": "Connection from root to Statistics",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 101
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_0",
+      "description": "Branch: Statistics",
+      "variants": [
+        {
+          "id": "branch_0",
+          "description": "Branch: Statistics",
+          "position": {
+            "x": 1020,
+            "y": 79
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Statistics",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_1",
+      "description": "Connection from root to Python",
+      "variants": [
+        {
+          "id": "line_1",
+          "description": "Connection from root to Python",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 204
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_1",
+      "description": "Branch: Python",
+      "variants": [
+        {
+          "id": "branch_1",
+          "description": "Branch: Python",
+          "position": {
+            "x": 1020,
+            "y": 182
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Python",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_2",
+      "description": "Connection from root to Pandas",
+      "variants": [
+        {
+          "id": "line_2",
+          "description": "Connection from root to Pandas",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 307
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_2",
+      "description": "Branch: Pandas",
+      "variants": [
+        {
+          "id": "branch_2",
+          "description": "Branch: Pandas",
+          "position": {
+            "x": 1020,
+            "y": 285
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Pandas",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_3",
+      "description": "Connection from root to ML",
+      "variants": [
+        {
+          "id": "line_3",
+          "description": "Connection from root to ML",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 411
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_3",
+      "description": "Branch: ML",
+      "variants": [
+        {
+          "id": "branch_3",
+          "description": "Branch: ML",
+          "position": {
+            "x": 1020,
+            "y": 389
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "ML",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_4",
+      "description": "Connection from root to Visualization",
+      "variants": [
+        {
+          "id": "line_4",
+          "description": "Connection from root to Visualization",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 514
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_4",
+      "description": "Branch: Visualization",
+      "variants": [
+        {
+          "id": "branch_4",
+          "description": "Branch: Visualization",
+          "position": {
+            "x": 1020,
+            "y": 492
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Visualization",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_5",
+      "description": "Connection from root to Deployment",
+      "variants": [
+        {
+          "id": "line_5",
+          "description": "Connection from root to Deployment",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#34D399",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 617
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_5",
+      "description": "Branch: Deployment",
+      "variants": [
+        {
+          "id": "branch_5",
+          "description": "Branch: Deployment",
+          "position": {
+            "x": 1020,
+            "y": 595
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#D1FAE5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Deployment",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#064E3B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

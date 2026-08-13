@@ -1,0 +1,703 @@
+{
+  "id": "mindmap-research-user",
+  "name": "User Research",
+  "description": "User research synthesis mindmap.",
+  "thumbnail": "static/thumbnail.png",
+  "icon_type": "bold",
+  "merged_components": [
+    {
+      "id": "background",
+      "description": "Full canvas background for the mindmap.",
+      "variants": [
+        {
+          "id": "background",
+          "description": "Full canvas background.",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#F8FAFC",
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 0,
+                  "y": 720
+                }
+              ],
+              "closed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_node",
+      "description": "Central topic of the mindmap",
+      "variants": [
+        {
+          "id": "center_node",
+          "description": "Central topic of the mindmap",
+          "position": {
+            "x": 540,
+            "y": 330
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#2563EB",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 60
+                },
+                {
+                  "x": 0,
+                  "y": 60
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "User Research",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 60
+              },
+              "style": {
+                "fontSize": 20,
+                "fontWeight": "700",
+                "color": "#FFFFFF",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_0",
+      "description": "Connection from center to Interviews",
+      "variants": [
+        {
+          "id": "line_0",
+          "description": "Connection from center to Interviews",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#60A5FA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 640,
+                  "y": 80
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_0",
+      "description": "Branch: Interviews",
+      "variants": [
+        {
+          "id": "branch_0",
+          "description": "Branch: Interviews",
+          "position": {
+            "x": 560,
+            "y": 55
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#DBEAFE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Interviews",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#1E3A8A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_1",
+      "description": "Connection from center to Surveys",
+      "variants": [
+        {
+          "id": "line_1",
+          "description": "Connection from center to Surveys",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#60A5FA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 882,
+                  "y": 220
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_1",
+      "description": "Branch: Surveys",
+      "variants": [
+        {
+          "id": "branch_1",
+          "description": "Branch: Surveys",
+          "position": {
+            "x": 802,
+            "y": 195
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#DBEAFE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Surveys",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#1E3A8A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_2",
+      "description": "Connection from center to Observation",
+      "variants": [
+        {
+          "id": "line_2",
+          "description": "Connection from center to Observation",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#60A5FA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 882,
+                  "y": 499
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_2",
+      "description": "Branch: Observation",
+      "variants": [
+        {
+          "id": "branch_2",
+          "description": "Branch: Observation",
+          "position": {
+            "x": 802,
+            "y": 474
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#DBEAFE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Observation",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#1E3A8A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_3",
+      "description": "Connection from center to Personas",
+      "variants": [
+        {
+          "id": "line_3",
+          "description": "Connection from center to Personas",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#60A5FA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 640,
+                  "y": 640
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_3",
+      "description": "Branch: Personas",
+      "variants": [
+        {
+          "id": "branch_3",
+          "description": "Branch: Personas",
+          "position": {
+            "x": 560,
+            "y": 615
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#DBEAFE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Personas",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#1E3A8A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_4",
+      "description": "Connection from center to Journey",
+      "variants": [
+        {
+          "id": "line_4",
+          "description": "Connection from center to Journey",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#60A5FA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 398,
+                  "y": 500
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_4",
+      "description": "Branch: Journey",
+      "variants": [
+        {
+          "id": "branch_4",
+          "description": "Branch: Journey",
+          "position": {
+            "x": 318,
+            "y": 475
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#DBEAFE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Journey",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#1E3A8A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_5",
+      "description": "Connection from center to Insights",
+      "variants": [
+        {
+          "id": "line_5",
+          "description": "Connection from center to Insights",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#60A5FA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 398,
+                  "y": 220
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_5",
+      "description": "Branch: Insights",
+      "variants": [
+        {
+          "id": "branch_5",
+          "description": "Branch: Insights",
+          "position": {
+            "x": 318,
+            "y": 195
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#DBEAFE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Insights",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 14,
+                "fontWeight": "400",
+                "color": "#1E3A8A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

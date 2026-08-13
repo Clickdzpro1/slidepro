@@ -1,0 +1,507 @@
+{
+  "id": "mindmap-analysis-stakeholder",
+  "name": "Stakeholder Map",
+  "description": "Stakeholder analysis mindmap with influence/interest.",
+  "thumbnail": "static/thumbnail.png",
+  "icon_type": "bold",
+  "merged_components": [
+    {
+      "id": "background",
+      "description": "Full canvas background for the mindmap.",
+      "variants": [
+        {
+          "id": "background",
+          "description": "Full canvas background.",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#F8FAFC",
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 0,
+                  "y": 720
+                }
+              ],
+              "closed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_node",
+      "description": "Center of the quadrant map",
+      "variants": [
+        {
+          "id": "center_node",
+          "description": "Center of the quadrant map",
+          "position": {
+            "x": 560,
+            "y": 335
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#475569",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Stakeholders",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 18,
+                "fontWeight": "700",
+                "color": "#FFFFFF",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_0",
+      "description": "Connection to Manage Closely quadrant",
+      "variants": [
+        {
+          "id": "line_0",
+          "description": "Connection to Manage Closely quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#94A3B8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 480,
+                  "y": 252
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_0",
+      "description": "Quadrant: Manage Closely",
+      "variants": [
+        {
+          "id": "quadrant_0",
+          "description": "Quadrant: Manage Closely",
+          "position": {
+            "x": 380,
+            "y": 225
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E2E8F0",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Manage Closely",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#1E293B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_1",
+      "description": "Connection to Keep Satisfied quadrant",
+      "variants": [
+        {
+          "id": "line_1",
+          "description": "Connection to Keep Satisfied quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#94A3B8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 800,
+                  "y": 252
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_1",
+      "description": "Quadrant: Keep Satisfied",
+      "variants": [
+        {
+          "id": "quadrant_1",
+          "description": "Quadrant: Keep Satisfied",
+          "position": {
+            "x": 700,
+            "y": 225
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E2E8F0",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Keep Satisfied",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#1E293B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_2",
+      "description": "Connection to Keep Informed quadrant",
+      "variants": [
+        {
+          "id": "line_2",
+          "description": "Connection to Keep Informed quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#94A3B8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 480,
+                  "y": 467
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_2",
+      "description": "Quadrant: Keep Informed",
+      "variants": [
+        {
+          "id": "quadrant_2",
+          "description": "Quadrant: Keep Informed",
+          "position": {
+            "x": 380,
+            "y": 440
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E2E8F0",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Keep Informed",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#1E293B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_3",
+      "description": "Connection to Monitor quadrant",
+      "variants": [
+        {
+          "id": "line_3",
+          "description": "Connection to Monitor quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#94A3B8",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 800,
+                  "y": 467
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_3",
+      "description": "Quadrant: Monitor",
+      "variants": [
+        {
+          "id": "quadrant_3",
+          "description": "Quadrant: Monitor",
+          "position": {
+            "x": 700,
+            "y": 440
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E2E8F0",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Monitor",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#1E293B",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

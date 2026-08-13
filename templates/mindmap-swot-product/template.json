@@ -1,0 +1,507 @@
+{
+  "id": "mindmap-swot-product",
+  "name": "SWOT Product",
+  "description": "Product SWOT analysis mindmap.",
+  "thumbnail": "static/thumbnail.png",
+  "icon_type": "bold",
+  "merged_components": [
+    {
+      "id": "background",
+      "description": "Full canvas background for the mindmap.",
+      "variants": [
+        {
+          "id": "background",
+          "description": "Full canvas background.",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#F5F3FF",
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 0,
+                  "y": 720
+                }
+              ],
+              "closed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_node",
+      "description": "Center of the quadrant map",
+      "variants": [
+        {
+          "id": "center_node",
+          "description": "Center of the quadrant map",
+          "position": {
+            "x": 560,
+            "y": 335
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#7C3AED",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 0
+                },
+                {
+                  "x": 160,
+                  "y": 50
+                },
+                {
+                  "x": 0,
+                  "y": 50
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Product SWOT",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 160,
+                "height": 50
+              },
+              "style": {
+                "fontSize": 18,
+                "fontWeight": "700",
+                "color": "#FFFFFF",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_0",
+      "description": "Connection to Strengths quadrant",
+      "variants": [
+        {
+          "id": "line_0",
+          "description": "Connection to Strengths quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#A78BFA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 480,
+                  "y": 252
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_0",
+      "description": "Quadrant: Strengths",
+      "variants": [
+        {
+          "id": "quadrant_0",
+          "description": "Quadrant: Strengths",
+          "position": {
+            "x": 380,
+            "y": 225
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#EDE9FE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Strengths",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#4C1D95",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_1",
+      "description": "Connection to Weaknesses quadrant",
+      "variants": [
+        {
+          "id": "line_1",
+          "description": "Connection to Weaknesses quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#A78BFA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 800,
+                  "y": 252
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_1",
+      "description": "Quadrant: Weaknesses",
+      "variants": [
+        {
+          "id": "quadrant_1",
+          "description": "Quadrant: Weaknesses",
+          "position": {
+            "x": 700,
+            "y": 225
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#EDE9FE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Weaknesses",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#4C1D95",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_2",
+      "description": "Connection to Opportunities quadrant",
+      "variants": [
+        {
+          "id": "line_2",
+          "description": "Connection to Opportunities quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#A78BFA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 480,
+                  "y": 467
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_2",
+      "description": "Quadrant: Opportunities",
+      "variants": [
+        {
+          "id": "quadrant_2",
+          "description": "Quadrant: Opportunities",
+          "position": {
+            "x": 380,
+            "y": 440
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#EDE9FE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Opportunities",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#4C1D95",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_3",
+      "description": "Connection to Threats quadrant",
+      "variants": [
+        {
+          "id": "line_3",
+          "description": "Connection to Threats quadrant",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#A78BFA",
+                "width": 3,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 640,
+                  "y": 360
+                },
+                {
+                  "x": 800,
+                  "y": 467
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadrant_3",
+      "description": "Quadrant: Threats",
+      "variants": [
+        {
+          "id": "quadrant_3",
+          "description": "Quadrant: Threats",
+          "position": {
+            "x": 700,
+            "y": 440
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#EDE9FE",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 0
+                },
+                {
+                  "x": 200,
+                  "y": 55
+                },
+                {
+                  "x": 0,
+                  "y": 55
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Threats",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 200,
+                "height": 55
+              },
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "700",
+                "color": "#4C1D95",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

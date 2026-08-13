@@ -1,0 +1,703 @@
+{
+  "id": "mindmap-learning-react",
+  "name": "React Learning Path",
+  "description": "React development learning path mindmap.",
+  "thumbnail": "static/thumbnail.png",
+  "icon_type": "bold",
+  "merged_components": [
+    {
+      "id": "background",
+      "description": "Full canvas background for the mindmap.",
+      "variants": [
+        {
+          "id": "background",
+          "description": "Full canvas background.",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#F0FDFA",
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 0,
+                  "y": 720
+                }
+              ],
+              "closed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_node",
+      "description": "Root of the tree mindmap",
+      "variants": [
+        {
+          "id": "center_node",
+          "description": "Root of the tree mindmap",
+          "position": {
+            "x": 80,
+            "y": 330
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#0F766E",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 60
+                },
+                {
+                  "x": 0,
+                  "y": 60
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "React",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 60
+              },
+              "style": {
+                "fontSize": 18,
+                "fontWeight": "700",
+                "color": "#FFFFFF",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_0",
+      "description": "Connection from root to JSX",
+      "variants": [
+        {
+          "id": "line_0",
+          "description": "Connection from root to JSX",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#2DD4BF",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 101
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_0",
+      "description": "Branch: JSX",
+      "variants": [
+        {
+          "id": "branch_0",
+          "description": "Branch: JSX",
+          "position": {
+            "x": 1020,
+            "y": 79
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#CCFBF1",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "JSX",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#134E4A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_1",
+      "description": "Connection from root to Components",
+      "variants": [
+        {
+          "id": "line_1",
+          "description": "Connection from root to Components",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#2DD4BF",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 204
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_1",
+      "description": "Branch: Components",
+      "variants": [
+        {
+          "id": "branch_1",
+          "description": "Branch: Components",
+          "position": {
+            "x": 1020,
+            "y": 182
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#CCFBF1",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Components",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#134E4A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_2",
+      "description": "Connection from root to Hooks",
+      "variants": [
+        {
+          "id": "line_2",
+          "description": "Connection from root to Hooks",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#2DD4BF",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 307
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_2",
+      "description": "Branch: Hooks",
+      "variants": [
+        {
+          "id": "branch_2",
+          "description": "Branch: Hooks",
+          "position": {
+            "x": 1020,
+            "y": 285
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#CCFBF1",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Hooks",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#134E4A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_3",
+      "description": "Connection from root to State",
+      "variants": [
+        {
+          "id": "line_3",
+          "description": "Connection from root to State",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#2DD4BF",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 411
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_3",
+      "description": "Branch: State",
+      "variants": [
+        {
+          "id": "branch_3",
+          "description": "Branch: State",
+          "position": {
+            "x": 1020,
+            "y": 389
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#CCFBF1",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "State",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#134E4A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_4",
+      "description": "Connection from root to Routing",
+      "variants": [
+        {
+          "id": "line_4",
+          "description": "Connection from root to Routing",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#2DD4BF",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 514
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_4",
+      "description": "Branch: Routing",
+      "variants": [
+        {
+          "id": "branch_4",
+          "description": "Branch: Routing",
+          "position": {
+            "x": 1020,
+            "y": 492
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#CCFBF1",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Routing",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#134E4A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_5",
+      "description": "Connection from root to Testing",
+      "variants": [
+        {
+          "id": "line_5",
+          "description": "Connection from root to Testing",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#2DD4BF",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 617
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_5",
+      "description": "Branch: Testing",
+      "variants": [
+        {
+          "id": "branch_5",
+          "description": "Branch: Testing",
+          "position": {
+            "x": 1020,
+            "y": 595
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#CCFBF1",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Testing",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#134E4A",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,703 @@
+{
+  "id": "mindmap-project-roadmap",
+  "name": "Project Roadmap",
+  "description": "Quarterly project roadmap mindmap with milestone branches.",
+  "thumbnail": "static/thumbnail.png",
+  "icon_type": "bold",
+  "merged_components": [
+    {
+      "id": "background",
+      "description": "Full canvas background for the mindmap.",
+      "variants": [
+        {
+          "id": "background",
+          "description": "Full canvas background.",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#EEF2FF",
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 0
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 0,
+                  "y": 720
+                }
+              ],
+              "closed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_node",
+      "description": "Root of the tree mindmap",
+      "variants": [
+        {
+          "id": "center_node",
+          "description": "Root of the tree mindmap",
+          "position": {
+            "x": 80,
+            "y": 330
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#4F46E5",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 60
+                },
+                {
+                  "x": 0,
+                  "y": 60
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Roadmap",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 60
+              },
+              "style": {
+                "fontSize": 18,
+                "fontWeight": "700",
+                "color": "#FFFFFF",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_0",
+      "description": "Connection from root to Q1",
+      "variants": [
+        {
+          "id": "line_0",
+          "description": "Connection from root to Q1",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 101
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_0",
+      "description": "Branch: Q1",
+      "variants": [
+        {
+          "id": "branch_0",
+          "description": "Branch: Q1",
+          "position": {
+            "x": 1020,
+            "y": 79
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Q1",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_1",
+      "description": "Connection from root to Q2",
+      "variants": [
+        {
+          "id": "line_1",
+          "description": "Connection from root to Q2",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 204
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_1",
+      "description": "Branch: Q2",
+      "variants": [
+        {
+          "id": "branch_1",
+          "description": "Branch: Q2",
+          "position": {
+            "x": 1020,
+            "y": 182
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Q2",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_2",
+      "description": "Connection from root to Q3",
+      "variants": [
+        {
+          "id": "line_2",
+          "description": "Connection from root to Q3",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 307
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_2",
+      "description": "Branch: Q3",
+      "variants": [
+        {
+          "id": "branch_2",
+          "description": "Branch: Q3",
+          "position": {
+            "x": 1020,
+            "y": 285
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Q3",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_3",
+      "description": "Connection from root to Q4",
+      "variants": [
+        {
+          "id": "line_3",
+          "description": "Connection from root to Q4",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 411
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_3",
+      "description": "Branch: Q4",
+      "variants": [
+        {
+          "id": "branch_3",
+          "description": "Branch: Q4",
+          "position": {
+            "x": 1020,
+            "y": 389
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Q4",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_4",
+      "description": "Connection from root to Risks",
+      "variants": [
+        {
+          "id": "line_4",
+          "description": "Connection from root to Risks",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 514
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_4",
+      "description": "Branch: Risks",
+      "variants": [
+        {
+          "id": "branch_4",
+          "description": "Branch: Risks",
+          "position": {
+            "x": 1020,
+            "y": 492
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Risks",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line_5",
+      "description": "Connection from root to Dependencies",
+      "variants": [
+        {
+          "id": "line_5",
+          "description": "Connection from root to Dependencies",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "line",
+              "stroke": {
+                "color": "#818CF8",
+                "width": 2,
+                "opacity": 1.0
+              },
+              "points": [
+                {
+                  "x": 260,
+                  "y": 360
+                },
+                {
+                  "x": 1020,
+                  "y": 617
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch_5",
+      "description": "Branch: Dependencies",
+      "variants": [
+        {
+          "id": "branch_5",
+          "description": "Branch: Dependencies",
+          "position": {
+            "x": 1020,
+            "y": 595
+          },
+          "elements": [
+            {
+              "type": "vector",
+              "shape": "polygon",
+              "fill": {
+                "color": "#E0E7FF",
+                "opacity": 0.9
+              },
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 0
+                },
+                {
+                  "x": 180,
+                  "y": 45
+                },
+                {
+                  "x": 0,
+                  "y": 45
+                }
+              ],
+              "closed": true
+            },
+            {
+              "type": "text",
+              "content": "Dependencies",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "dimensions": {
+                "width": 180,
+                "height": 45
+              },
+              "style": {
+                "fontSize": 13,
+                "fontWeight": "400",
+                "color": "#312E81",
+                "fontFamily": "Inter, sans-serif",
+                "textAlign": "center",
+                "verticalAlign": "middle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
