@@ -1,6 +1,5 @@
-# Dockerfile.vercel — FastAPI-only backend for Vercel Services (slim version)
-# Skips spaCy + FastEmbed cache warming to keep the image small and startup fast.
-# These features can be added back once the basic container is verified working.
+# Dockerfile.vercel — FastAPI-only backend for Vercel Services (slim)
+# Vercel container functions expect the server to listen on port 80.
 
 # syntax=docker/dockerfile:1.7
 FROM python:3.11-slim-trixie AS builder
@@ -22,16 +21,17 @@ COPY servers/fastapi /app/servers/fastapi
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --python /opt/venv/bin/python --no-deps .
 
-# ---- Runtime (slim — no spaCy model, no FastEmbed cache) ----
+# ---- Runtime ----
 FROM python:3.11-slim-trixie AS runtime
 
-WORKDIR /app
+WORKDIR /app/servers/fastapi
 
 ENV PATH="/opt/venv/bin:${PATH}" \
     NODE_ENV=production \
     START_OLLAMA=false \
     APP_DATA_DIRECTORY=/tmp/app_data \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
 COPY --from=builder /opt/venv /opt/venv
 COPY --from=builder /app/servers/fastapi /app/servers/fastapi
@@ -41,5 +41,8 @@ RUN mkdir -p /tmp/app_data/exports /tmp/app_data/images /tmp/app_data/uploads \
     /tmp/app_data/fonts /tmp/app_data/templates /tmp/app_data/pptx-to-html \
     /tmp/app_data/pptx-to-json && chmod -R a+rX /tmp/app_data
 
+# Hardcode port 80 (Vercel container functions expect port 80).
+# server.py binds to 0.0.0.0 when PORT env is set; we set it in the CMD.
+ENV PORT=80
 EXPOSE 80
-CMD ["sh", "-c", "cd /app/servers/fastapi && exec python server.py --port ${PORT:-80} --reload false --log-level info"]
+CMD ["python", "server.py", "--port", "80", "--reload", "false", "--log-level", "info"]
