@@ -1,50 +1,100 @@
-# Dockerfile.vercel — test DB connection from Vercel container to Neon
-FROM python:3.11-slim
+# Dockerfile.vercel — presenton FastAPI with error-capturing wrapper
+# Builds the real presenton app but wraps the import in a try/except so
+# we can see the actual error that causes FUNCTION_INVOCATION_FAILED.
 
-WORKDIR /app
+# syntax=docker/dockerfile:1.7
+FROM python:3.11-slim-trixie AS builder
 
-RUN pip install --no-cache-dir fastapi uvicorn asyncpg
+WORKDIR /app/servers/fastapi
 
-COPY <<'EOF' /app/main.py
-import os
-import ssl
+ENV UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy
+
+RUN python -m venv --without-pip /opt/venv \
+    && pip install --no-cache-dir uv
+
+COPY servers/fastapi/pyproject.toml servers/fastapi/uv.lock ./
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv export --frozen --no-dev --no-emit-project -o /tmp/requirements.txt \
+    && uv pip install --python /opt/venv/bin/python -r /tmp/requirements.txt
+
+COPY servers/fastapi /app/servers/fastapi
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv pip install --python /opt/venv/bin/python --no-deps .
+
+# ---- Runtime ----
+FROM python:3.11-slim-trixie AS runtime
+
+WORKDIR /app/servers/fastapi
+
+ENV PATH="/opt/venv/bin:${PATH}" \
+    NODE_ENV=production \
+    START_OLLAMA=false \
+    APP_DATA_DIRECTORY=/tmp/app_data \
+    PYTHONUNBUFFERED=1
+
+COPY --from=builder /opt/venv /opt/venv
+COPY --from=builder /app/servers/fastapi /app/servers/fastapi
+COPY templates /app/templates
+
+RUN mkdir -p /tmp/app_data/exports /tmp/app_data/images /tmp/app_data/uploads \
+    /tmp/app_data/fonts /tmp/app_data/templates /tmp/app_data/pptx-to-html \
+    /tmp/app_data/pptx-to-json && chmod -R a+rX /tmp/app_data
+
+# Create a wrapper that catches import errors and exposes them via HTTP
+COPY <<'EOF' /app/servers/fastapi/debug_main.py
+import sys
+import traceback
 from fastapi import FastAPI
 
-app = FastAPI()
-
-@app.get("/")
-def root():
-    db_url = os.getenv("DATABASE_URL", "NOT SET")
-    return {
-        "status": "ok",
-        "service": "slidepro-api-db-test",
-        "db_url_prefix": db_url[:30] + "..." if db_url else "NOT SET",
-        "port": os.getenv("PORT", "NOT SET"),
-    }
-
-@app.get("/test-db")
-async def test_db():
-    import asyncpg
-    db_url = os.getenv("DATABASE_URL", "")
-    try:
-        from urllib.parse import urlsplit
-        split = urlsplit(db_url.replace("postgresql://", "postgres://"))
-        ctx = ssl.create_default_context()
-        conn = await asyncpg.connect(
-            host=split.hostname,
-            port=split.port or 5432,
-            user=split.username,
-            password=split.password,
-            database=split.path.lstrip("/"),
-            ssl=ctx,
-            timeout=10,
-        )
-        version = await conn.fetchval("SELECT version()")
-        await conn.close()
-        return {"status": "connected", "version": version[:100]}
-    except Exception as e:
-        return {"status": "failed", "error": str(e)[:300]}
+# Try to import the real app
+try:
+    from api.main import app as real_app
+    # Override the lifespan to catch startup errors
+    from contextlib import asynccontextmanager
+    
+    @asynccontextmanager
+    async def safe_lifespan(app):
+        try:
+            from api.lifespan import app_lifespan
+            async with app_lifespan(app):
+                yield
+        except Exception as e:
+            # Log the error but don't crash — expose it via the debug endpoint
+            print(f"LIFESPAN ERROR: {e}", file=sys.stderr)
+            traceback.print_exc(file=sys.stderr)
+            app.state.lifespan_error = str(e)
+            yield
+    
+    # Replace the lifespan
+    real_app.router.lifespan_context = safe_lifespan
+    app = real_app
+    
+    @app.get("/debug/error")
+    def debug_error():
+        return {"lifespan_error": getattr(app.state, "lifespan_error", None)}
+    
+except Exception as e:
+    # Import failed — create a fallback app that reports the error
+    error_msg = str(e)
+    error_tb = traceback.format_exc()
+    print(f"IMPORT ERROR: {error_msg}", file=sys.stderr)
+    print(error_tb, file=sys.stderr)
+    
+    app = FastAPI()
+    
+    @app.get("/")
+    def root():
+        return {"status": "import_failed", "error": error_msg[:500]}
+    
+    @app.get("/debug/error")
+    def debug_error():
+        return {"import_error": error_msg, "traceback": error_tb[:2000]}
+    
+    @app.get("/api/v1/auth/status")
+    def auth_status():
+        return {"configured": False, "authenticated": False, "error": error_msg[:200]}
 EOF
 
 EXPOSE 80
-CMD ["sh", "-c", "exec uvicorn main:app --host 0.0.0.0 --port ${PORT:-80}"]
+CMD ["sh", "-c", "exec uvicorn debug_main:app --host 0.0.0.0 --port ${PORT:-80}"]
