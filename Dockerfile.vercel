@@ -1,4 +1,6 @@
-# Dockerfile.vercel — presenton FastAPI with error-capturing wrapper
+# Dockerfile.vercel — presenton FastAPI backend for Vercel Services
+# Requires VERCEL_SUPPORT_LARGE_FUNCTIONS=1 (image >500MB with all Python deps)
+
 # syntax=docker/dockerfile:1.7
 FROM python:3.11-slim-trixie AS builder
 
@@ -34,12 +36,9 @@ COPY --from=builder /opt/venv /opt/venv
 COPY --from=builder /app/servers/fastapi /app/servers/fastapi
 COPY templates /app/templates
 
-# Copy the debug wrapper
-COPY servers/fastapi/debug_main.py /app/servers/fastapi/debug_main.py
-
 RUN mkdir -p /tmp/app_data/exports /tmp/app_data/images /tmp/app_data/uploads \
     /tmp/app_data/fonts /tmp/app_data/templates /tmp/app_data/pptx-to-html \
     /tmp/app_data/pptx-to-json && chmod -R a+rX /tmp/app_data
 
 EXPOSE 80
-CMD ["sh", "-c", "exec uvicorn debug_main:app --host 0.0.0.0 --port ${PORT:-80}"]
+CMD ["sh", "-c", "exec uvicorn api.main:app --host 0.0.0.0 --port ${PORT:-80}"]
