@@ -1,5 +1,5 @@
-# Dockerfile.vercel — FastAPI-only backend for Vercel Services (slim)
-# Vercel container functions expect the server to listen on port 80.
+# Dockerfile.vercel — FastAPI-only backend for Vercel Services
+# Runs uvicorn directly (not via server.py) for maximum compatibility.
 
 # syntax=docker/dockerfile:1.7
 FROM python:3.11-slim-trixie AS builder
@@ -41,8 +41,8 @@ RUN mkdir -p /tmp/app_data/exports /tmp/app_data/images /tmp/app_data/uploads \
     /tmp/app_data/fonts /tmp/app_data/templates /tmp/app_data/pptx-to-html \
     /tmp/app_data/pptx-to-json && chmod -R a+rX /tmp/app_data
 
-# Hardcode port 80 (Vercel container functions expect port 80).
-# server.py binds to 0.0.0.0 when PORT env is set; we set it in the CMD.
-ENV PORT=80
+# Run uvicorn directly — the standard way to serve FastAPI.
+# Bind to 0.0.0.0:80 (Vercel container functions expect port 80).
+# The PORT env var is set by Vercel at runtime; we default to 80.
 EXPOSE 80
-CMD ["python", "server.py", "--port", "80", "--reload", "false", "--log-level", "info"]
+CMD ["sh", "-c", "exec uvicorn api.main:app --host 0.0.0.0 --port ${PORT:-80}"]
