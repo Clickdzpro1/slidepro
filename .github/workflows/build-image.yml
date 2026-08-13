@@ -20,7 +20,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: clickdzpro1/slidepro
   VCR_REGISTRY: vcr.vercel.com
   VCR_IMAGE: clickdz/slidepro-proxy/presenton
 
