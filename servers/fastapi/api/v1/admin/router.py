@@ -1,3 +1,4 @@
+import json as _json
 import uuid
 import os
 import shutil
@@ -15,9 +16,11 @@ from api.v1.auth.schemas import (
 from api.v1.auth.users import (
     PASSWORD_HELPER,
     get_current_admin,
+    get_jwt_strategy,
     read_user_from_cookie,
     serialize_user,
 )
+from api.v1.auth.config import SESSION_COOKIE_NAME
 from models.sql.user import User
 from models.sql.key_value import KeyValueSqlModel
 from services.database import get_async_session
@@ -177,3 +180,71 @@ async def delete_user(
         root_dir = os.path.realpath(root)
         if owned_dir.startswith(f"{root_dir}{os.sep}") and os.path.isdir(owned_dir):
             shutil.rmtree(owned_dir)
+
+
+# ---------------------------------------------------------------------------
+# Bridge provision — auto-create a presenton user for the ClickDz auth shim.
+# POST /api/v1/admin/bridge-provision
+# Guarded by BRIDGE_PROVISION_SECRET (shared with the shim). The shim calls
+# this when /api/bridge/session returns a non-existent-user error, so the user
+# lands on the app already logged in without ever seeing a signup screen.
+# Idempotent: if the user already exists, skips creation and still returns a
+# valid session cookie.
+# ---------------------------------------------------------------------------
+
+BRIDGE_PROVISION_SECRET = (os.getenv("BRIDGE_PROVISION_SECRET") or "").strip()
+
+
+def _verify_bridge_secret(request: Request) -> None:
+    auth = request.headers.get("Authorization", "")
+    provided = ""
+    if auth.lower().startswith("bearer "):
+        provided = auth.split(" ", 1)[1].strip()
+    if not BRIDGE_PROVISION_SECRET or provided != BRIDGE_PROVISION_SECRET:
+        raise HTTPException(status_code=401, detail="Invalid bridge provision credentials")
+
+
+@API_V1_ADMIN_ROUTER.post("/bridge-provision")
+async def bridge_provision(
+    request: Request,
+    session: AsyncSession = Depends(get_async_session),
+):
+    _verify_bridge_secret(request)
+    try:
+        body = await request.json()
+    except (_json.JSONDecodeError, ValueError):
+        raise HTTPException(status_code=400, detail="Invalid JSON body")
+
+    username = (body.get("username") or "").strip()
+    password = body.get("password") or ""
+
+    if not username or len(username) < 3:
+        raise HTTPException(status_code=422, detail="Username must be at least 3 characters")
+    if not password or len(password) < 8:
+        raise HTTPException(status_code=422, detail="Password must be at least 8 characters")
+
+    # Look up existing user (case-insensitive)
+    user = await session.scalar(
+        select(User).where(func.lower(User.username) == username.casefold())
+    )
+
+    if user is None:
+        user = User(
+            username=username,
+            hashed_password=PASSWORD_HELPER.hash(password),
+            is_active=True,
+            is_verified=True,
+            is_superuser=False,
+            auth_version=1,
+        )
+        session.add(user)
+        await session.commit()
+        await session.refresh(user)
+
+    token = await get_jwt_strategy().write_token(user)
+
+    return {
+        "cookie_name": SESSION_COOKIE_NAME,
+        "cookie_value": token,
+        "user_id": str(user.id),
+    }
