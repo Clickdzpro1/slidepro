@@ -31,6 +31,15 @@ function selectedTextModel(config: LLMConfig): string {
             return config.BEDROCK_MODEL || "";
         case "codex":
             return config.CODEX_MODEL || "";
+        // ClickDz fork: Gemini/Vertex are vision-capable — surface the model
+        // name so isSotaTemplateModel can recognize it. Without these cases the
+        // function returned "" for LLM=google, falsely triggering the
+        // "Template V2 works best with vision-capable models" warning even
+        // though Gemini accepts image inputs.
+        case "google":
+            return config.GOOGLE_MODEL || "";
+        case "vertex":
+            return config.VERTEX_MODEL || "";
         default:
             return "";
     }
@@ -49,7 +58,14 @@ function isSotaTemplateModel(config: LLMConfig): boolean {
 
     if (!model) return false;
     if (OPENAI_SOTA_VISION_MODELS.some((family) => matchesOpenAIModel(model, family))) return true;
-    return model.includes("claude-") && (model.includes("opus") || model.includes("sonnet"));
+    if (model.includes("claude-") && (model.includes("opus") || model.includes("sonnet"))) return true;
+    // ClickDz fork: Gemini (google/vertex) is vision-capable — Template V2
+    // sends a slide screenshot to the text model, and Gemini accepts image
+    // inputs. Recognize gemini-2.5/3/3.1 (flash/pro) so the warning doesn't
+    // show falsely. The "models/" prefix presenton uses by default is stripped
+    // by normalizeModelName's split("/").pop().
+    if (model.startsWith("gemini-") && /flash|pro|2\.5|3\b|3\.1/i.test(model)) return true;
+    return false;
 }
 
 function hasDismissedNonSotaToast(): boolean {
