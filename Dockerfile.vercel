@@ -1,22 +1,51 @@
-# Dockerfile.vercel — minimal test to verify Vercel container functions work
+# Dockerfile.vercel — test DB connection from Vercel container
 FROM python:3.11-slim
 
 WORKDIR /app
 
-# Create a minimal FastAPI app
-RUN pip install --no-cache-dir fastapi uvicorn
+RUN pip install --no-cache-dir fastapi uvicorn asyncpg ssl
 
 COPY <<'EOF' /app/main.py
+import os
+import ssl
+import asyncio
 from fastapi import FastAPI
+
 app = FastAPI()
 
 @app.get("/")
 def root():
-    return {"status": "ok", "service": "slidepro-api"}
+    db_url = os.getenv("DATABASE_URL", "NOT SET")
+    return {
+        "status": "ok",
+        "service": "slidepro-api-db-test",
+        "db_url_prefix": db_url[:30] + "..." if db_url else "NOT SET",
+        "port": os.getenv("PORT", "NOT SET"),
+    }
 
-@app.get("/api/v1/auth/status")
-def auth_status():
-    return {"configured": True, "authenticated": False, "username": None, "user_id": None, "role": None}
+@app.get("/test-db")
+async def test_db():
+    import asyncpg
+    db_url = os.getenv("DATABASE_URL", "")
+    try:
+        # Parse the connection string
+        from urllib.parse import urlsplit
+        split = urlsplit(db_url.replace("postgresql://", "postgres://"))
+        ctx = ssl.create_default_context()
+        conn = await asyncpg.connect(
+            host=split.hostname,
+            port=split.port or 5432,
+            user=split.username,
+            password=split.password,
+            database=split.path.lstrip("/"),
+            ssl=ctx,
+            timeout=10,
+        )
+        version = await conn.fetchval("SELECT version()")
+        await conn.close()
+        return {"status": "connected", "version": version[:100]}
+    except Exception as e:
+        return {"status": "failed", "error": str(e)[:300]}
 EOF
 
 EXPOSE 80
