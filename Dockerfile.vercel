@@ -1,9 +1,5 @@
 # Dockerfile.vercel — FastAPI-only backend for Vercel Services
-# Builds just the presenton FastAPI server (no Next.js, no nginx) and serves
-# it on $PORT (Vercel Functions contract). Postgres is external (managed).
-#
-# This eliminates the sandbox + recycler + Docker-in-sandbox entirely.
-# The Next.js frontend runs as a separate Vercel project (slidepro-frontend).
+# Vercel injects PORT env var (default 80). The server binds to 0.0.0.0:$PORT.
 
 # syntax=docker/dockerfile:1.7
 FROM python:3.11-slim-trixie AS builder
@@ -25,7 +21,6 @@ COPY servers/fastapi /app/servers/fastapi
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --python /opt/venv/bin/python --no-deps .
 
-# spaCy BM25 lemmatization model
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --python /opt/venv/bin/python \
     "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl"
@@ -33,10 +28,9 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ENV HF_HOME=/root/.cache/huggingface \
     PRESENTON_FASTEMBED_ICON_CACHE_DIR=/root/.cache/presenton/fastembed-icons
 
-# Warm FastEmbed caches into the image
 RUN /opt/venv/bin/python scripts/warm_fastembed_cache.py
 
-# ---- Runtime stage ----
+# ---- Runtime ----
 FROM python:3.11-slim-trixie AS runtime
 
 WORKDIR /app
@@ -47,22 +41,16 @@ ENV PATH="/opt/venv/bin:${PATH}" \
     APP_DATA_DIRECTORY=/tmp/app_data \
     PYTHONUNBUFFERED=1
 
-# Copy the venv and app code
 COPY --from=builder /opt/venv /opt/venv
 COPY --from=builder /app/servers/fastapi /app/servers/fastapi
 COPY --from=builder /root/.cache/huggingface /root/.cache/huggingface
 COPY --from=builder /root/.cache/presenton/fastembed-icons /root/.cache/presenton/fastembed-icons
 COPY templates /app/templates
 
-# Create app_data directories (ephemeral on Vercel Functions — use Vercel Blob
-# for persistent file storage in production)
 RUN mkdir -p /tmp/app_data/exports /tmp/app_data/images /tmp/app_data/uploads \
     /tmp/app_data/fonts /tmp/app_data/templates /tmp/app_data/pptx-to-html \
-    /tmp/app_data/pptx-to-json \
-    && chmod -R a+rX /tmp/app_data
+    /tmp/app_data/pptx-to-json && chmod -R a+rX /tmp/app_data
 
-# The FastAPI server binds to $PORT (Vercel Functions contract).
-# server.py uses argparse for --port; we wrap it with a shell entrypoint
-# that passes $PORT and binds to 0.0.0.0 (required for Vercel).
-EXPOSE 8080
-CMD ["sh", "-c", "cd /app/servers/fastapi && exec python server.py --port ${PORT:-8080} --reload false --log-level info"]
+# Vercel injects $PORT (default 80). server.py binds to 0.0.0.0 when PORT is set.
+EXPOSE 80
+CMD ["sh", "-c", "cd /app/servers/fastapi && exec python server.py --port ${PORT:-80} --reload false --log-level info"]
