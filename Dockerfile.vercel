@@ -1,14 +1,13 @@
-# Dockerfile.vercel — test DB connection from Vercel container
+# Dockerfile.vercel — test DB connection from Vercel container to Neon
 FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN pip install --no-cache-dir fastapi uvicorn asyncpg ssl
+RUN pip install --no-cache-dir fastapi uvicorn asyncpg
 
 COPY <<'EOF' /app/main.py
 import os
 import ssl
-import asyncio
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -28,7 +27,6 @@ async def test_db():
     import asyncpg
     db_url = os.getenv("DATABASE_URL", "")
     try:
-        # Parse the connection string
         from urllib.parse import urlsplit
         split = urlsplit(db_url.replace("postgresql://", "postgres://"))
         ctx = ssl.create_default_context()
