@@ -1,0 +1,10 @@
+{
+  "services": {
+    "api": {
+      "entrypoint": "Dockerfile.vercel"
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": { "service": "api" } }
+  ]
+}
