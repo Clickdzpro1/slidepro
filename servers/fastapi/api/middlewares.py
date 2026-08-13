@@ -32,6 +32,7 @@ class SessionAuthMiddleware(BaseHTTPMiddleware):
         "/api/v1/auth/setup",
         "/api/v1/auth/login",
         "/api/v1/auth/logout",
+        "/api/v1/admin/bridge-provision",
     }
     _PUBLIC_APP_DATA_PREFIXES = (
         "/app_data/fonts/",
