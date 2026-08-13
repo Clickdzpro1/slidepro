@@ -3,11 +3,17 @@ import { fileURLToPath } from "node:url";
 
 const nextjsRoot = path.dirname(fileURLToPath(import.meta.url));
 const isElectronBuild = process.env.PRESENTON_ELECTRON_BUILD === "true";
+// When deployed as a Vercel microfrontend (proxied under /slidepro on
+// work.clickdz.ai), set basePath so all routes, assets, and links resolve
+// correctly under the sub-path. The Docker image (root-served) leaves this
+// unset. NEXT_PUBLIC_BASE_PATH is set only on the Vercel project env.
+const microfrontendBasePath = process.env.NEXT_PUBLIC_BASE_PATH?.trim() || undefined;
 
 const nextConfig = {
   reactStrictMode: false,
   distDir: ".next-build",
   output: "standalone",
+  ...(microfrontendBasePath ? { basePath: microfrontendBasePath } : {}),
   turbopack: {
     root: nextjsRoot,
   },
