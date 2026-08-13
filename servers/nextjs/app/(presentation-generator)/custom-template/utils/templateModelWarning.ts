@@ -40,6 +40,14 @@ function selectedTextModel(config: LLMConfig): string {
             return config.GOOGLE_MODEL || "";
         case "vertex":
             return config.VERTEX_MODEL || "";
+        // ClickDz fork: LLM=custom routes through the Vercel AI Gateway with
+        // an OpenAI-compatible model id like "alibaba/qwen3.7-flash". Surface
+        // CUSTOM_MODEL so isSotaTemplateModel can evaluate vision capability.
+        // Without this the function returned "" for LLM=custom, falsely
+        // triggering the "Template V2 works best with vision-capable models"
+        // warning even though qwen3.7-flash accepts image inputs.
+        case "custom":
+            return config.CUSTOM_MODEL || "";
         default:
             return "";
     }
@@ -65,6 +73,11 @@ function isSotaTemplateModel(config: LLMConfig): boolean {
     // show falsely. The "models/" prefix presenton uses by default is stripped
     // by normalizeModelName's split("/").pop().
     if (model.startsWith("gemini-") && /flash|pro|2\.5|3\b|3\.1/i.test(model)) return true;
+    // ClickDz fork: Qwen 3.x VL models (qwen3.5/3.6/3.7-flash/plus/max) are
+    // native vision-language models — they accept image inputs, so Template V2's
+    // slide-screenshot-to-text-model flow works. normalizeModelName strips the
+    // "alibaba/" provider prefix via split("/").pop(), leaving "qwen3.7-flash".
+    if (model.startsWith("qwen") && /flash|plus|max|vl/i.test(model)) return true;
     return false;
 }
 
