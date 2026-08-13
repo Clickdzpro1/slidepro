@@ -1,7 +1,11 @@
 name: Build and Push SlidePro Image
 
-# Builds the SlidePro (presenton fork) image and pushes it to GHCR.
+# Builds the SlidePro (presenton fork) image and pushes it to GHCR + VCR.
 # Triggers: push to main (image build), manual dispatch, and on tag (versioned release).
+# VCR (Vercel Container Registry) is the primary registry for Sandbox boot —
+# GHCR is kept as a legacy/fallback. The recycler boots from VCR via
+# Sandbox.create({image:'presenton:tag'}) which resolves against the
+# slidepro-proxy project's VCR namespace.
 on:
   push:
     branches: [main]
@@ -19,6 +23,8 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  VCR_REGISTRY: vcr.vercel.com
+  VCR_IMAGE: clickdz/slidepro-proxy/presenton
 
 jobs:
   build-and-push:
@@ -41,22 +47,32 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Log in to VCR (Vercel Container Registry)
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.VCR_REGISTRY }}
+          username: ${{ secrets.VERCEL_TEAM_ID }}
+          password: ${{ secrets.VERCEL_TOKEN }}
+
       - name: Extract metadata (tags, labels)
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            ${{ env.VCR_REGISTRY }}/${{ env.VCR_IMAGE }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=sha,format=short
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
 
-      - name: Build and push
+      - name: Build and push (GHCR + VCR)
         uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
+          platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
