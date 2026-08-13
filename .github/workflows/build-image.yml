@@ -3,9 +3,7 @@ name: Build and Push SlidePro Image
 # Builds the SlidePro (presenton fork) image and pushes it to GHCR + VCR.
 # Triggers: push to main (image build), manual dispatch, and on tag (versioned release).
 # VCR (Vercel Container Registry) is the primary registry for Sandbox boot —
-# GHCR is kept as a legacy/fallback. The recycler boots from VCR via
-# Sandbox.create({image:'presenton:tag'}) which resolves against the
-# slidepro-proxy project's VCR namespace.
+# GHCR is kept as a legacy/fallback. VCR requires zstd compression + linux/amd64.
 on:
   push:
     branches: [main]
@@ -54,27 +52,42 @@ jobs:
           username: ${{ secrets.VERCEL_TEAM_ID }}
           password: ${{ secrets.VERCEL_TOKEN }}
 
-      - name: Extract metadata (tags, labels)
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            ${{ env.VCR_REGISTRY }}/${{ env.VCR_IMAGE }}
-          tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
-            type=sha,format=short
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
+      - name: Extract short SHA
+        id: sha
+        run: echo "short=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
-      - name: Build and push (GHCR + VCR)
+      # GHCR push — standard gzip compression, both :latest and :sha-XXXX tags
+      - name: Build and push to GHCR
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ steps.sha.outputs.short }}
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # VCR push — zstd compression, linux/amd64 only (VCR requirement)
+      # Uses buildx --output with compression=zstd to stay under the 500MB/layer limit
+      - name: Build and push to VCR (zstd)
         uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+          outputs: |
+            type=image,name=${{ env.VCR_REGISTRY }}/${{ env.VCR_IMAGE }}:latest,push=true,oci-mediatypes=true,compression=zstd,compression-level=3,force-compression=true
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+
+      # Tag the VCR :latest image as :sha-XXXX for immutable rollouts
+      - name: Tag VCR sha tag
+        run: |
+          docker buildx imagetools create \
+            ${{ env.VCR_REGISTRY }}/${{ env.VCR_IMAGE }}:latest \
+            ${{ env.VCR_REGISTRY }}/${{ env.VCR_IMAGE }}:sha-${{ steps.sha.outputs.short }}
