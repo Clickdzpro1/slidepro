@@ -1,48 +1,23 @@
-# Dockerfile.vercel — FastAPI-only backend for Vercel Services
-# Runs uvicorn directly (not via server.py) for maximum compatibility.
+# Dockerfile.vercel — minimal test to verify Vercel container functions work
+FROM python:3.11-slim
 
-# syntax=docker/dockerfile:1.7
-FROM python:3.11-slim-trixie AS builder
+WORKDIR /app
 
-WORKDIR /app/servers/fastapi
+# Create a minimal FastAPI app
+RUN pip install --no-cache-dir fastapi uvicorn
 
-ENV UV_COMPILE_BYTECODE=1 \
-    UV_LINK_MODE=copy
+COPY <<'EOF' /app/main.py
+from fastapi import FastAPI
+app = FastAPI()
 
-RUN python -m venv --without-pip /opt/venv \
-    && pip install --no-cache-dir uv
+@app.get("/")
+def root():
+    return {"status": "ok", "service": "slidepro-api"}
 
-COPY servers/fastapi/pyproject.toml servers/fastapi/uv.lock ./
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv export --frozen --no-dev --no-emit-project -o /tmp/requirements.txt \
-    && uv pip install --python /opt/venv/bin/python -r /tmp/requirements.txt
+@app.get("/api/v1/auth/status")
+def auth_status():
+    return {"configured": True, "authenticated": False, "username": None, "user_id": None, "role": None}
+EOF
 
-COPY servers/fastapi /app/servers/fastapi
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv pip install --python /opt/venv/bin/python --no-deps .
-
-# ---- Runtime ----
-FROM python:3.11-slim-trixie AS runtime
-
-WORKDIR /app/servers/fastapi
-
-ENV PATH="/opt/venv/bin:${PATH}" \
-    NODE_ENV=production \
-    START_OLLAMA=false \
-    APP_DATA_DIRECTORY=/tmp/app_data \
-    PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
-
-COPY --from=builder /opt/venv /opt/venv
-COPY --from=builder /app/servers/fastapi /app/servers/fastapi
-COPY templates /app/templates
-
-RUN mkdir -p /tmp/app_data/exports /tmp/app_data/images /tmp/app_data/uploads \
-    /tmp/app_data/fonts /tmp/app_data/templates /tmp/app_data/pptx-to-html \
-    /tmp/app_data/pptx-to-json && chmod -R a+rX /tmp/app_data
-
-# Run uvicorn directly — the standard way to serve FastAPI.
-# Bind to 0.0.0.0:80 (Vercel container functions expect port 80).
-# The PORT env var is set by Vercel at runtime; we default to 80.
 EXPOSE 80
-CMD ["sh", "-c", "exec uvicorn api.main:app --host 0.0.0.0 --port ${PORT:-80}"]
+CMD ["sh", "-c", "exec uvicorn main:app --host 0.0.0.0 --port ${PORT:-80}"]
