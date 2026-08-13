@@ -40,5 +40,7 @@ RUN mkdir -p /tmp/app_data/exports /tmp/app_data/images /tmp/app_data/uploads \
     /tmp/app_data/fonts /tmp/app_data/templates /tmp/app_data/pptx-to-html \
     /tmp/app_data/pptx-to-json && chmod -R a+rX /tmp/app_data
 
+# Use python -m uvicorn (not uvicorn directly) — the venv bin might not be
+# on the PATH inside Vercel's container runtime's sh -c subshell.
 EXPOSE 80
-CMD ["sh", "-c", "exec uvicorn api.main:app --host 0.0.0.0 --port ${PORT:-80}"]
+CMD ["sh", "-c", "exec python -m uvicorn api.main:app --host 0.0.0.0 --port ${PORT:-80}"]
