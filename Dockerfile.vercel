@@ -1,5 +1,6 @@
-# Dockerfile.vercel — FastAPI-only backend for Vercel Services
-# Vercel injects PORT env var (default 80). The server binds to 0.0.0.0:$PORT.
+# Dockerfile.vercel — FastAPI-only backend for Vercel Services (slim version)
+# Skips spaCy + FastEmbed cache warming to keep the image small and startup fast.
+# These features can be added back once the basic container is verified working.
 
 # syntax=docker/dockerfile:1.7
 FROM python:3.11-slim-trixie AS builder
@@ -21,16 +22,7 @@ COPY servers/fastapi /app/servers/fastapi
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --python /opt/venv/bin/python --no-deps .
 
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv pip install --python /opt/venv/bin/python \
-    "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl"
-
-ENV HF_HOME=/root/.cache/huggingface \
-    PRESENTON_FASTEMBED_ICON_CACHE_DIR=/root/.cache/presenton/fastembed-icons
-
-RUN /opt/venv/bin/python scripts/warm_fastembed_cache.py
-
-# ---- Runtime ----
+# ---- Runtime (slim — no spaCy model, no FastEmbed cache) ----
 FROM python:3.11-slim-trixie AS runtime
 
 WORKDIR /app
@@ -43,14 +35,11 @@ ENV PATH="/opt/venv/bin:${PATH}" \
 
 COPY --from=builder /opt/venv /opt/venv
 COPY --from=builder /app/servers/fastapi /app/servers/fastapi
-COPY --from=builder /root/.cache/huggingface /root/.cache/huggingface
-COPY --from=builder /root/.cache/presenton/fastembed-icons /root/.cache/presenton/fastembed-icons
 COPY templates /app/templates
 
 RUN mkdir -p /tmp/app_data/exports /tmp/app_data/images /tmp/app_data/uploads \
     /tmp/app_data/fonts /tmp/app_data/templates /tmp/app_data/pptx-to-html \
     /tmp/app_data/pptx-to-json && chmod -R a+rX /tmp/app_data
 
-# Vercel injects $PORT (default 80). server.py binds to 0.0.0.0 when PORT is set.
 EXPOSE 80
 CMD ["sh", "-c", "cd /app/servers/fastapi && exec python server.py --port ${PORT:-80} --reload false --log-level info"]
