@@ -1,3 +1,4 @@
+import os
 import uvicorn
 import argparse
 from api.main import app
@@ -18,7 +19,11 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     reload = args.reload == "true"
-    host = "127.0.0.1"
+    # Vercel Functions require binding to 0.0.0.0 (not 127.0.0.1) so the
+    # platform can route traffic to the container. When PORT env is set
+    # (Vercel deployment), bind to 0.0.0.0; otherwise keep 127.0.0.1 for
+    # local dev and the Docker image (nginx proxies on the same host).
+    host = "0.0.0.0" if os.environ.get("PORT") else "127.0.0.1"
 
     uvicorn.run(
         "api.main:app",
