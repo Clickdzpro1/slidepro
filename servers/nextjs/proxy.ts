@@ -89,7 +89,11 @@ function isApiAuthExempt(pathname: string): boolean {
     pathname === "/api/telemetry-status" ||
     /** Public image transform used as a browser/Konva image source. */
     pathname === "/api/update-svg" ||
-    pathname.startsWith("/api/export-presentation-data/")
+    pathname.startsWith("/api/export-presentation-data/") ||
+    /** Microfrontend bridge: auto-provisions a presenton user and sets a
+     *  first-party session cookie. Must be exempt because the caller has no
+     *  presenton session yet (that's the whole point — it's creating one). */
+    pathname === "/api/bridge-redeem"
   );
 }
 
