@@ -192,11 +192,11 @@ class Text(BaseModel):
     shadow: Optional[Shadow] = None
     runs: list[TextRunValue]
 
-    # Schema
-    decorative: bool
-    name: str
-    max_length: int
-    min_length: int
+    # Schema - made optional for mindmap import
+    decorative: bool = False
+    name: str = "text"
+    max_length: int = 500
+    min_length: int = 0
 
 
 class Container(BaseModel):  # Konva Group
@@ -283,6 +283,10 @@ class Table(BaseModel):
 class VectorShape(str, Enum):
     POLYGON = "polygon"
     ELLIPSE = "ellipse"
+    LINE = "line"
+    RECTANGLE = "rectangle"
+    CIRCLE = "circle"
+    PATH = "path"
 
 
 class VectorCurve(BaseModel):
