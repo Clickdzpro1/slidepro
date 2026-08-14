@@ -134,45 +134,133 @@ def _load_default_template(template_dir: Path) -> TemplateV2 | None:
     merged_raw = rewritten.get("merged_components")
     components_raw = rewritten.get("components")
 
+    def _convert_old_text_el(el: Any) -> Any:
+        if not isinstance(el, dict) or el.get("type") != "text":
+            return el
+        # If already new format (has runs), keep
+        if "runs" in el:
+            # Ensure required schema fields exist
+            el.setdefault("decorative", False)
+            el.setdefault("name", el.get("content", "")[:30] if isinstance(el.get("content"), str) else "text")
+            el.setdefault("max_length", 200)
+            el.setdefault("min_length", 0)
+            return el
+        # Old format: {content, position, dimensions, style}
+        content_text = el.get("content", "") if isinstance(el.get("content"), str) else str(el.get("content", ""))
+        pos = el.get("position", {}) if isinstance(el.get("position"), dict) else {}
+        dims = el.get("dimensions", {}) if isinstance(el.get("dimensions"), dict) else {}
+        style = el.get("style", {}) if isinstance(el.get("style"), dict) else {}
+        font_size = style.get("fontSize", 20)
+        color = style.get("color", "#000000")
+        font_family = style.get("fontFamily", "Inter, sans-serif")
+        bold = "700" in str(style.get("fontWeight", "")) or style.get("fontWeight") == "bold"
+        return {
+            "type": "text",
+            "position": {"x": float(pos.get("x", 0)), "y": float(pos.get("y", 0))},
+            "size": {"width": float(dims.get("width", 200)), "height": float(dims.get("height", 60))},
+            "font": {"size": float(font_size), "family": str(font_family), "color": str(color), "bold": bool(bold)},
+            "runs": [{"text": str(content_text), "font": {"size": float(font_size), "family": str(font_family), "color": str(color), "bold": bool(bold)}}],
+            "decorative": False,
+            "name": str(content_text)[:30] if content_text else "text",
+            "max_length": 200,
+            "min_length": 0,
+        }
+
+    def _convert_els(els: Any) -> list:
+        if not isinstance(els, list):
+            return []
+        converted = []
+        for el in els:
+            if not isinstance(el, dict):
+                continue
+            # Convert old text format
+            if el.get("type") == "text" and "runs" not in el and "content" in el:
+                converted.append(_convert_old_text_el(el))
+            elif el.get("type") == "vector":
+                # Keep vector, shape line now allowed (fixed in elements.py)
+                converted.append(el)
+            else:
+                # Try to keep as-is but ensure required fields
+                if el.get("type") == "text":
+                    el.setdefault("decorative", False)
+                    el.setdefault("name", "text")
+                    el.setdefault("max_length", 200)
+                    el.setdefault("min_length", 0)
+                    if "runs" not in el:
+                        el["runs"] = [{"text": el.get("content", "text")}]
+                converted.append(el)
+        return converted
+
     if layouts_raw is None:
         # If we have merged_components, synthesize layouts from them
         if isinstance(merged_raw, list) and len(merged_raw) > 0:
-            layouts_raw = [
-                {
-                    "id": f"{template_id}-layout-{i}",
-                    "description": f"Layout {i+1} for {template_id} — auto-synthesized from merged component",
-                    "components": [mc.get("variants", [{}])[0] for mc in merged_raw[:4] if isinstance(mc, dict)],
-                }
-                for i in range(min(3, len(merged_raw)))
-            ]
-            # Ensure components array non-empty for each synthesized layout
-            for layout in layouts_raw:
-                if not layout["components"]:
-                    # minimal placeholder component
-                    layout["components"] = [
+            layouts_raw = []
+            for i in range(min(3, len(merged_raw))):
+                # Gather up to 4 merged components' first variant as slide components
+                comps = []
+                for mc in merged_raw[i*4:(i+1)*4]:
+                    if not isinstance(mc, dict):
+                        continue
+                    variants = mc.get("variants", [])
+                    if not variants or not isinstance(variants, list):
+                        continue
+                    first_variant = variants[0] if isinstance(variants[0], dict) else {}
+                    # Convert its elements from old format to new
+                    els = _convert_els(first_variant.get("elements", []))
+                    # Build a Component from the variant
+                    comp = {
+                        "id": first_variant.get("id", mc.get("id", f"comp-{i}")),
+                        "description": first_variant.get("description", mc.get("description", f"Component {i}")),
+                        "position": first_variant.get("position", {"x": 0, "y": 0}),
+                        "elements": els,
+                    }
+                    if comp["elements"]:
+                        comps.append(comp)
+                if not comps:
+                    # minimal placeholder when conversion yields empty
+                    comps = [
                         {
                             "id": "title",
-                            "description": "Title component placeholder for mindmap import",
+                            "description": "Title placeholder for mindmap import",
                             "position": {"x": 0, "y": 0, "width": 800, "height": 100},
                             "elements": [
                                 {
                                     "type": "text",
-                                    "data": {
-                                        "text": template_id,
-                                        "fontSize": 32,
-                                        "fontWeight": "bold",
-                                    },
+                                    "position": {"x": 0, "y": 0},
+                                    "size": {"width": 800, "height": 100},
+                                    "font": {"size": 32, "family": "Inter, sans-serif", "bold": True},
+                                    "runs": [{"text": template_id}],
+                                    "decorative": False,
+                                    "name": template_id,
+                                    "max_length": 200,
+                                    "min_length": 0,
                                 }
                             ],
                         }
                     ]
+                layouts_raw.append(
+                    {
+                        "id": f"{template_id}-layout-{i}",
+                        "description": f"Layout {i+1} for {template_id} — auto-synthesized from merged components (mindmap fix)",
+                        "components": comps,
+                    }
+                )
         elif isinstance(components_raw, dict) or isinstance(components_raw, list):
             # Fallback: if only components exist
+            raw_comps = list(components_raw.values())[:6] if isinstance(components_raw, dict) else components_raw[:6]
+            # Convert old format comps if needed - assume they are already components with elements
+            converted_comps = []
+            for c in raw_comps:
+                if isinstance(c, dict) and "elements" in c:
+                    c["elements"] = _convert_els(c["elements"])
+                    converted_comps.append(c)
+                elif isinstance(c, dict):
+                    converted_comps.append(c)
             layouts_raw = [
                 {
                     "id": f"{template_id}-main",
                     "description": f"Main layout for {template_id}",
-                    "components": list(components_raw.values())[:6] if isinstance(components_raw, dict) else components_raw[:6],
+                    "components": converted_comps,
                 }
             ]
 
