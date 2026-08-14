@@ -190,13 +190,44 @@ class Text(BaseModel):
     fill: Optional[Fill] = None
     stroke: Optional[Stroke] = None
     shadow: Optional[Shadow] = None
-    runs: list[TextRunValue]
+    runs: list[TextRunValue] = Field(default_factory=list)
 
     # Schema - made optional for mindmap import
     decorative: bool = False
     name: str = "text"
     max_length: int = 500
     min_length: int = 0
+
+    @model_validator(mode="before")
+    @classmethod
+    def _coerce_old_mindmap_format(cls, value):
+        if not isinstance(value, dict):
+            return value
+        # Old mindmap format: {content, position, dimensions, style} without runs
+        if "runs" in value:
+            return value
+        content = value.get("content")
+        if isinstance(content, str) and content:
+            pos = value.get("position", {}) if isinstance(value.get("position"), dict) else {}
+            dims = value.get("dimensions", {}) if isinstance(value.get("dimensions"), dict) else {}
+            style = value.get("style", {}) if isinstance(value.get("style"), dict) else {}
+            font_size = style.get("fontSize", 16)
+            color = style.get("color", "#000000")
+            font_family = style.get("fontFamily", "Inter, sans-serif")
+            bold = "700" in str(style.get("fontWeight", "")) or style.get("fontWeight") == "bold"
+            # Preserve other fields like type
+            return {
+                "type": "text",
+                "position": {"x": float(pos.get("x", 0)), "y": float(pos.get("y", 0))},
+                "size": {"width": float(dims.get("width", 200)), "height": float(dims.get("height", 60))},
+                "font": {"size": float(font_size), "family": str(font_family), "color": str(color), "bold": bool(bold)},
+                "runs": [{"text": str(content), "font": {"size": float(font_size), "family": str(font_family), "color": str(color), "bold": bool(bold)}}],
+                "decorative": bool(value.get("decorative", False)),
+                "name": str(content)[:30] if content else value.get("name", "text"),
+                "max_length": int(value.get("max_length", 500)),
+                "min_length": int(value.get("min_length", 0)),
+            }
+        return value
 
 
 class Container(BaseModel):  # Konva Group
