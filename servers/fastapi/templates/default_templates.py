@@ -37,7 +37,14 @@ async def import_default_templates_on_startup(
     async with async_session_maker() as session:
         imported_template_ids: set[str] = set()
         for template_dir in template_dirs:
-            template = _load_default_template(template_dir)
+            try:
+                template = _load_default_template(template_dir)
+            except Exception as e:
+                LOGGER.warning("Skipping invalid template %s: %s", template_dir.name, e)
+                continue
+            if template is None:
+                LOGGER.warning("Skipping template with no layouts/components %s", template_dir.name)
+                continue
             imported_template_ids.add(template.id)
             existing = await session.get(TemplateV2, template.id)
 
@@ -109,7 +116,7 @@ def resolve_default_template_id(
     return template_id
 
 
-def _load_default_template(template_dir: Path) -> TemplateV2:
+def _load_default_template(template_dir: Path) -> TemplateV2 | None:
     template_json_path = template_dir / "template.json"
     raw = json.loads(template_json_path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict):
@@ -118,8 +125,67 @@ def _load_default_template(template_dir: Path) -> TemplateV2:
     template_id = _read_template_id(raw, template_dir)
     rewritten = _rewrite_static_asset_urls(raw, template_id)
 
-    layouts = _coerce_slide_layouts(rewritten.get("layouts"))
-    merged_components = _coerce_merged_components(rewritten.get("merged_components"))
+    # CDZ FIX: mindmap templates intentionally have layouts=None and provide
+    # only merged_components / components. The upstream SlideLayouts model
+    # requires layouts min_length=1 and crashes startup. For mindmaps we
+    # synthesize a minimal SlideLayout from merged_components / components
+    # so they import successfully — v2 mindmap rendering will be added.
+    layouts_raw = rewritten.get("layouts")
+    merged_raw = rewritten.get("merged_components")
+    components_raw = rewritten.get("components")
+
+    if layouts_raw is None:
+        # If we have merged_components, synthesize layouts from them
+        if isinstance(merged_raw, list) and len(merged_raw) > 0:
+            layouts_raw = [
+                {
+                    "id": f"{template_id}-layout-{i}",
+                    "description": f"Layout {i+1} for {template_id} — auto-synthesized from merged component",
+                    "components": [mc.get("variants", [{}])[0] for mc in merged_raw[:4] if isinstance(mc, dict)],
+                }
+                for i in range(min(3, len(merged_raw)))
+            ]
+            # Ensure components array non-empty for each synthesized layout
+            for layout in layouts_raw:
+                if not layout["components"]:
+                    # minimal placeholder component
+                    layout["components"] = [
+                        {
+                            "id": "title",
+                            "description": "Title component placeholder for mindmap import",
+                            "position": {"x": 0, "y": 0, "width": 800, "height": 100},
+                            "elements": [
+                                {
+                                    "type": "text",
+                                    "data": {
+                                        "text": template_id,
+                                        "fontSize": 32,
+                                        "fontWeight": "bold",
+                                    },
+                                }
+                            ],
+                        }
+                    ]
+        elif isinstance(components_raw, dict) or isinstance(components_raw, list):
+            # Fallback: if only components exist
+            layouts_raw = [
+                {
+                    "id": f"{template_id}-main",
+                    "description": f"Main layout for {template_id}",
+                    "components": list(components_raw.values())[:6] if isinstance(components_raw, dict) else components_raw[:6],
+                }
+            ]
+
+    if layouts_raw is None:
+        LOGGER.warning("Template %s has no layouts and no merge fallback — skipping", template_id)
+        return None
+
+    layouts = _coerce_slide_layouts(layouts_raw)
+    if layouts is None:
+        LOGGER.warning("Template %s coerce layouts returned None — skipping", template_id)
+        return None
+
+    merged_components = _coerce_merged_components(merged_raw)
     components = rewritten.get("components")
     assets = _build_assets(rewritten, template_id, layouts, merged_components)
 
@@ -195,22 +261,34 @@ def _read_optional_string(value: Any) -> str | None:
     return None
 
 
-def _coerce_slide_layouts(value: Any) -> dict[str, Any]:
-    payload = {"layouts": value} if isinstance(value, list) else value
-    return SlideLayouts.model_validate(payload).model_dump(
-        mode="json",
-        exclude_none=True,
-    )
+def _coerce_slide_layouts(value: Any) -> dict[str, Any] | None:
+    if value is None:
+        return None
+    try:
+        payload = {"layouts": value} if isinstance(value, list) else value
+        if payload is None:
+            return None
+        return SlideLayouts.model_validate(payload).model_dump(
+            mode="json",
+            exclude_none=True,
+        )
+    except Exception as e:
+        LOGGER.warning("Failed to coerce slide layouts %s...: %s", str(value)[:200], e)
+        return None
 
 
 def _coerce_merged_components(value: Any) -> dict[str, Any] | None:
     if value is None:
         return None
-    payload = {"components": value} if isinstance(value, list) else value
-    return MergedComponents.model_validate(payload).model_dump(
-        mode="json",
-        exclude_none=True,
-    )
+    try:
+        payload = {"components": value} if isinstance(value, list) else value
+        return MergedComponents.model_validate(payload).model_dump(
+            mode="json",
+            exclude_none=True,
+        )
+    except Exception as e:
+        LOGGER.warning("Failed to coerce merged components: %s", e)
+        return None
 
 
 def _build_assets(
