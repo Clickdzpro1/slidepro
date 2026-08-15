@@ -22,16 +22,9 @@ def is_openai_compatible_selected() -> bool:
     return ImageProvider.OPENAI_COMPATIBLE == get_selected_image_provider()
 
 
-def is_gemini_flash_selected() -> bool:
-    return ImageProvider.GEMINI_FLASH == get_selected_image_provider()
-
-
-def is_nanobanana_pro_selected() -> bool:
-    return ImageProvider.NANOBANANA_PRO == get_selected_image_provider()
-
-
-def is_nanobanana2_selected() -> bool:
-    return ImageProvider.NANOBANANA2 == get_selected_image_provider()
+# WS14: Gemini image tiers replaced by Prodia Flux Schnell via Vercel AI Gateway.
+def is_prodia_flux_selected() -> bool:
+    return ImageProvider.PRODIA_FLUX == get_selected_image_provider()
 
 
 def is_dalle3_selected() -> bool:
