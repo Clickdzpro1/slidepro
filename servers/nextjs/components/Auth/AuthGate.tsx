@@ -9,6 +9,7 @@ import {
   PRESENTON_SPLASH_MIN_DURATION_MS,
   PresentonSplashLoader,
 } from "@/components/ui/presenton-splash-loader";
+// SlidePro branding — Presenton fork rebranded for ClickDz.
 import { notify } from "@/components/ui/sonner";
 import { sanitizeAnalyticsError } from "@/utils/analytics";
 import { MixpanelEvent, trackEvent } from "@/utils/mixpanel";
@@ -328,7 +329,7 @@ export default function AuthGate() {
     status.authenticated ||
     !hasMetSplashDuration
   ) {
-    return <PresentonSplashLoader message="Preparing your workspace..." />;
+    return <PresentonSplashLoader message="SlidePro · Preparing your workspace..." />;
   }
 
   return (
@@ -336,18 +337,12 @@ export default function AuthGate() {
       <section className="relative z-10 w-full max-w-lg rounded-[20px] border border-[#EDEEEF] bg-[#F9F8F8] p-7 sm:p-10">
         <div className="mb-7">
           <div className="flex items-center gap-4">
-            <div className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[4px] bg-[#F4F3FF] p-3">
-              <Image
-                src="/logo-with-bg.png"
-                alt=""
-                width={161}
-                height={166}
-                className="h-10 w-auto object-contain"
-              />
+            <div className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[4px] bg-gradient-to-br from-[#7C51F8] to-[#4F2FD4] p-3">
+              <span className="font-unbounded text-xl font-bold text-white">S</span>
             </div>
             <div>
               <p className="font-syne text-[10px] font-semibold uppercase tracking-[0.14em] text-[#7A5AF8]">
-                Secure instance
+                ClickDz · SlidePro
               </p>
               <h1 className="mt-1 font-unbounded text-xl font-normal leading-tight tracking-[-0.03em] text-black sm:text-[22px]">
                 {isSetupMode ? "Create your admin login" : "Sign in to continue"}
