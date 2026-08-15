@@ -11,10 +11,8 @@ interface PresentonSplashLoaderProps {
 export const PRESENTON_SPLASH_MIN_DURATION_MS = 3000;
 
 const SPLASH_ANIMATION_MS = 2600;
-const SPLASH_MASK_SRC = "/Presenton_Splash.png";
 
 let splashSessionStartedAt: number | null = null;
-let splashMaskReadyPromise: Promise<void> | null = null;
 
 function markSplashSessionStart(): number {
   if (splashSessionStartedAt === null) {
@@ -28,48 +26,14 @@ function getSplashAnimationDelayMs(): number {
   return -Math.min(elapsed, SPLASH_ANIMATION_MS);
 }
 
-function ensureSplashMaskReady(): Promise<void> {
-  if (typeof window === "undefined") {
-    return Promise.resolve();
-  }
-
-  if (!splashMaskReadyPromise) {
-    splashMaskReadyPromise = new Promise((resolve) => {
-      const img = new Image();
-      img.decoding = "async";
-      const finish = () => resolve();
-      img.onload = finish;
-      img.onerror = finish;
-      img.src = SPLASH_MASK_SRC;
-      if (img.complete) {
-        finish();
-      }
-    });
-  }
-
-  return splashMaskReadyPromise;
-}
-
 export function PresentonSplashLoader({
-  message = "Preparing your workspace",
+  message = "Preparing your workspace...",
   className,
 }: PresentonSplashLoaderProps) {
-  const [isWordmarkReady, setIsWordmarkReady] = useState(false);
   const [animationDelayMs, setAnimationDelayMs] = useState(0);
 
   useLayoutEffect(() => {
     setAnimationDelayMs(getSplashAnimationDelayMs());
-
-    let cancelled = false;
-    void ensureSplashMaskReady().then(() => {
-      if (!cancelled) {
-        setIsWordmarkReady(true);
-      }
-    });
-
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   const containerStyle: CSSProperties = {
@@ -77,9 +41,11 @@ export function PresentonSplashLoader({
     inset: 0,
     zIndex: 2147483000,
     display: "flex",
+    flexDirection: "column",
     minHeight: "100vh",
     alignItems: "center",
     justifyContent: "center",
+    gap: "24px",
     overflow: "hidden",
     background: "#ffffff",
   };
@@ -91,33 +57,11 @@ export function PresentonSplashLoader({
     width: "142vmax",
     height: "142vmax",
     borderRadius: "50%",
-    background: "#7a5af8",
+    background: "#7C51F8",
     transform: "translate3d(-50%, -50%, 0) scale(0.001)",
     animation: `presenton-splash-surface-grow ${SPLASH_ANIMATION_MS}ms linear ${animationDelayMs}ms both`,
     willChange: "transform",
     backfaceVisibility: "hidden",
-  };
-
-  const wordmarkStyle: CSSProperties = {
-    position: "relative",
-    zIndex: 1,
-    transform: "translateZ(0)",
-    width: "min(56vw, 511.5px)",
-    aspectRatio: "1023 / 342",
-    visibility: isWordmarkReady ? "visible" : "hidden",
-  };
-
-  const wordmarkLayerStyle: CSSProperties = {
-    position: "absolute",
-    inset: 0,
-    maskImage: `url('${SPLASH_MASK_SRC}')`,
-    maskRepeat: "no-repeat",
-    maskPosition: "center",
-    maskSize: "contain",
-    WebkitMaskImage: `url('${SPLASH_MASK_SRC}')`,
-    WebkitMaskRepeat: "no-repeat",
-    WebkitMaskPosition: "center",
-    WebkitMaskSize: "contain",
   };
 
   return (
@@ -133,29 +77,34 @@ export function PresentonSplashLoader({
         aria-hidden="true"
         style={surfaceStyle}
       />
-      <div
-        className="presenton-splash-wordmark"
-        aria-hidden="true"
-        style={wordmarkStyle}
+      <span
+        style={{
+          position: "relative",
+          zIndex: 1,
+          fontFamily: "'Unbounded', 'Syne', sans-serif",
+          fontSize: "clamp(2rem, 8vw, 4.5rem)",
+          fontWeight: 700,
+          color: "#ffffff",
+          opacity: 0,
+          animation: `presenton-splash-text-reveal ${SPLASH_ANIMATION_MS}ms linear ${animationDelayMs}ms both`,
+          letterSpacing: "-0.02em",
+        }}
       >
-        <span
-          className="presenton-splash-wordmark-layer presenton-splash-wordmark-base"
-          style={{
-            ...wordmarkLayerStyle,
-            background: "#7a5af8",
-          }}
-        />
-        <span
-          className="presenton-splash-wordmark-layer presenton-splash-wordmark-reveal"
-          style={{
-            ...wordmarkLayerStyle,
-            background: "#ffffff",
-            clipPath: "circle(0 at 50% 50%)",
-            animation: `presenton-splash-text-reveal ${SPLASH_ANIMATION_MS}ms linear ${animationDelayMs}ms both`,
-            willChange: "clip-path",
-          }}
-        />
-      </div>
+        SlidePro
+      </span>
+      <span
+        style={{
+          position: "relative",
+          zIndex: 1,
+          fontFamily: "'Manrope', 'Inter', sans-serif",
+          fontSize: "0.875rem",
+          color: "rgba(255,255,255,0.70)",
+          opacity: 0,
+          animation: `presenton-splash-text-reveal ${SPLASH_ANIMATION_MS}ms linear ${(animationDelayMs || 0) + 200}ms both`,
+        }}
+      >
+        by ClickDz
+      </span>
     </main>
   );
 }
