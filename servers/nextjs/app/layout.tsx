@@ -41,46 +41,36 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://presenton.ai"),
-  title: "Presenton - Open Source AI presentation generator",
+  metadataBase: new URL("https://work.clickdz.ai"),
+  title: "SlidePro by ClickDz — AI Presentation Generator",
   description:
-    "Open-source AI presentation generator with custom layouts, multi-model support (OpenAI, Gemini, Ollama), and PDF/PPTX export. A free Gamma alternative.",
+    "AI-powered presentation generator with 114 templates, custom layouts, and PDF/PPTX export. Part of the ClickDz workspace.",
   keywords: [
     "AI presentation generator",
+    "SlidePro",
+    "ClickDz",
     "data storytelling",
-    "data visualization tool",
-    "AI data presentation",
     "presentation generator",
-    "data to presentation",
-    "interactive presentations",
+    "AI data presentation",
     "professional slides",
   ],
   openGraph: {
-    title: "Presenton - Open Source AI presentation generator",
+    title: "SlidePro by ClickDz — AI Presentation Generator",
     description:
-      "Open-source AI presentation generator with custom layouts, multi-model support (OpenAI, Gemini, Ollama), and PDF/PPTX export. A free Gamma alternative.",
-    url: "https://presenton.ai",
-    siteName: "Presenton",
-    images: [
-      {
-        url: "https://presenton.ai/presenton-feature-graphics.png",
-        width: 1200,
-        height: 630,
-        alt: "Presenton Logo",
-      },
-    ],
+      "AI-powered presentation generator with 114 templates, custom layouts, and PDF/PPTX export. Part of the ClickDz workspace.",
+    url: "https://work.clickdz.ai",
+    siteName: "SlidePro",
     type: "website",
     locale: "en_US",
   },
   alternates: {
-    canonical: "https://presenton.ai",
+    canonical: "https://work.clickdz.ai",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Presenton - Open Source AI presentation generator",
+    title: "SlidePro by ClickDz — AI Presentation Generator",
     description:
-      "Open-source AI presentation generator with custom layouts, multi-model support (OpenAI, Gemini, Ollama), and PDF/PPTX export. A free Gamma alternative.",
-    images: ["https://presenton.ai/presenton-feature-graphics.png"],
+      "AI-powered presentation generator with 114 templates, custom layouts, and PDF/PPTX export. Part of the ClickDz workspace.",
   },
 };
 
