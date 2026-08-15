@@ -409,18 +409,15 @@ def get_openai_compat_image_model_env():
     return os.getenv("OPENAI_COMPAT_IMAGE_MODEL")
 
 
-# NanoBanana2 (Gemini 3.1 Flash Image) — slide-optimized Gemini provider
-def get_nanobanana2_aspect_ratio_env() -> str | None:
-    """Aspect ratio for NanoBanana2 image generation. Defaults to 16:9 (slide format).
-
-    Supported by Gemini 3.1 Flash Image: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9.
+# WS14: Prodia Flux Schnell via Vercel AI Gateway — replaces all Gemini providers.
+# ~$0.001-0.0025/image (33-67x cheaper than Gemini). Text-to-image only.
+def get_prodia_flux_api_key_env() -> str | None:
+    """API key for Prodia Flux Schnell via Vercel AI Gateway.
+    Falls back to CUSTOM_LLM_API_KEY (same gateway key used for LLMs).
     """
-    return os.getenv("NANOBANANA2_ASPECT_RATIO") or "16:9"
+    return os.getenv("PRODIA_FLUX_API_KEY")
 
 
-def get_nanobanana2_resolution_env() -> str | None:
-    """Output resolution for NanoBanana2. Defaults to 2K for crisp slides.
-
-    Supported: "512", "1k", "2k", "4k" (Gemini 3.1 Flash Image supports up to 4K).
-    """
-    return os.getenv("NANOBANANA2_RESOLUTION") or "2k"
+def get_ai_gateway_base_env() -> str | None:
+    """Base URL for Vercel AI Gateway. Defaults to https://ai-gateway.vercel.sh."""
+    return os.getenv("AI_GATEWAY_BASE") or "https://ai-gateway.vercel.sh"
